@@ -103,4 +103,31 @@ class PostRepository extends ServiceEntityRepository
             return 2 <= $term->length();
         });
     }
+
+    /**
+     * Get all posts in an Array Result, ordered by publishedAt DESC
+     * @return array
+     */
+    public function getAllPosts(): array
+    {
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.publishedAt', 'DESC')
+            ->setMaxResults(1000)
+            ->getQuery()
+            ->getArrayResult();
+    }
+
+    /**
+     * Get a single $id post 
+     * @param int $id
+     * @return mixed[]
+     */
+    public function getPost(int $id)
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.id = ' . $id)
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getArrayResult();
+    }
 }
