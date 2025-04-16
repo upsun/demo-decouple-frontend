@@ -59,24 +59,7 @@
 * ``main`` branch contains the starting point of the blogpost: a monolith Symfony application to host on Upsun
 * ``decouple-frontend`` branch contains the final result of the blogpost: a Symfony API application as backend and a Next.js application as frontend, displaying the list of blogpost + single page for each of them
 
-### Blackfire.io: creating a Continuous Observability Strategy
-
-This template includes a starting [`.blackfire.yml`](.blackfire.yml) file that can be used to enable [Application Performance Monitoring](https://blackfire.io/docs/monitoring-cookbooks/index), [Profiling](https://blackfire.io/docs/profiling-cookbooks/index), [Builds](https://blackfire.io/docs/builds-cookbooks/index) and [Performance Testing](https://blackfire.io/docs/testing-cookbooks/index) on your project. Upsun comes with Blackfire pre-installed on application containers, and [setting up requires minimal configuration](https://docs.upsun.com/integrations/observability/blackfire.html).
-
-* [What is Blackfire?](https://blackfire.io/docs/introduction)
-* [Configuring Blackfire.io on a Upsun project](https://docs.upsun.com/integrations/observability/blackfire.html)
-* [Blackfire.io Upsun documentation](https://blackfire.io/docs/integrations/paas/platformsh)
-* [Profiling Cookbooks](https://blackfire.io/docs/profiling-cookbooks/index)
-* [Monitoring Cookbooks](https://blackfire.io/docs/monitoring-cookbooks/index)
-* [Testing Cookbooks](https://blackfire.io/docs/testing-cookbooks/index)
-* [Using Builds](https://blackfire.io/docs/builds-cookbooks/index)
-* [Configuring Integrations](https://blackfire.io/docs/integrations/index)
-
-
 ### Resources
-
-
-- [API Platform](https://api-platform.com/)
 
 - [Upsun PHP documentation](https://docs.upsun.com/languages/php.html)
 
