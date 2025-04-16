@@ -85,6 +85,9 @@ applications:
             deploy: |
                 set -eux
                 npm run build                
+            post_deploy: |
+                set -eux
+                npm run build                
         web:
             commands:
                 start: "npx next start -p $PORT"

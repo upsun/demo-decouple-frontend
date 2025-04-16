@@ -7,14 +7,14 @@ export default async function Posts() {
     const res = await fetch(`${backendUrl}/${locale}/api/get-all-posts/`, {cache: "no-store"});
 
     if (!res.ok) {
-        throw new Error(`Error while fetching posts: ${res.status}`);
+        throw new Error(`Error while fetching posts:  ${res.status}`);
     }
 
     const posts = await res.json();
 
     return (
         <div className="row">
-            <div className="col-12">
+            <div className="col-12 ">
                 <div className={'post-title'}><h2>Posts</h2></div>
                 <div className="divTable table table-striped table-dark table-borderless table-hover">
                     <div className="divTableHeading">
