@@ -26,7 +26,7 @@ export default async function Posts() {
                     </div>
                     {posts.map((post, index) => (
                         <div className="divTableRow" key={index}>
-                            <Link href={`/post/${locale}/${post.id}`} className="divTableCell">{post.title}</Link>
+                            <Link  href={`/post/${locale}/${post.id}`} className="divTableCell">{post.title}</Link>
                             <Link href={`/post/${locale}/${post.id}`} className="divTableCell">{post.summary}</Link>
                             <Link href={`/post/${locale}/${post.id}`} className="divTableCell">{post.publishedAt.date}</Link>
                         </div>
