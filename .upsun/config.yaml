@@ -68,6 +68,9 @@ applications:
             root: "/frontend"
         type: "nodejs:22"
         container_profile: HIGH_MEMORY
+        variables:
+            env:
+                NODE_ENV: production
         mounts:
             "/.npm":
                 source: "storage"
