@@ -1,4 +1,3 @@
-import { format } from "date-fns";
 import Link from "next/link";
 const localhost="http://localhost:8000";
 const locale = typeof navigator !== "undefined" ? navigator.language.split("-")[0] : "en";
@@ -29,7 +28,7 @@ export default async function Posts() {
                         <div className="divTableRow" key={index}>
                             <Link href={`/post/${locale}/${post.id}`} className="divTableCell">{post.title}</Link>
                             <Link href={`/post/${locale}/${post.id}`} className="divTableCell">{post.summary}</Link>
-                            <Link href={`/post/${locale}/${post.id}`} className="divTableCell">{format(post.publishedAt, "d MMMM yyyy")}</Link>
+                            <Link href={`/post/${locale}/${post.id}`} className="divTableCell">{post.publishedAt.date}</Link>
                         </div>
                     ))}
                 </div>
