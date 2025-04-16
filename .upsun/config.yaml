@@ -72,10 +72,15 @@ applications:
             "/.npm":
                 source: "storage"
                 source_path: "npm"
+            "/.next":
+                source: "storage"
+                source_path: "next"    
         hooks:
             build: |
                 set -eux
                 npm i
+            deploy: |
+                set -eux
                 npm run build                
         web:
             commands:
@@ -84,4 +89,8 @@ applications:
                 socket_family: tcp
             locations:
                 "/":
-                    passthru: true        
+                    passthru: true
+        relationships:
+            api:
+                service: "app"
+                endpoint: "http"                        
