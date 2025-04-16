@@ -35,10 +35,11 @@
 <p align="center">
 <strong>Contents</strong>
 <br /><br />
-<a href="#about"><strong>About</strong></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-<a href="#getting-started"><strong>Getting started</strong></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-<a href="#migrate"><strong>Migrate</strong></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-<a href="#learn"><strong>Learn</strong></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<a href="#features"><strong>Features</strong></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<a href="#structure"><strong>Structure</strong></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<a href="#resources"><strong>Resources</strong></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<a href="#contact"><strong>Contact</strong></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<a href="#about-upsun"><strong>Learn</strong></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 <a href="#contribute"><strong>Contribute</strong></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 <br />
 </p>
@@ -49,7 +50,7 @@
 > <BR>This repo contains the final result you should obtain following [this blogpost](https://devcenter.upsun.com/posts/sfcon2024-decouple-frontend/).
 > <BR>This repo is meant to be maintained by the community.
 
-### Features
+## Features
 - PHP 8.3
 - Composer-based build
 - NodeJS v22
@@ -59,18 +60,18 @@
 * ``main`` branch contains the starting point of the blogpost: a monolith Symfony application to host on Upsun
 * ``decouple-frontend`` branch contains the final result of the blogpost: a Symfony API application as backend and a Next.js application as frontend, displaying the list of blogpost + single page for each of them
 
-### Resources
+## Resources
 
 - [Upsun PHP documentation](https://docs.upsun.com/languages/php.html)
 
 
-### Contact
+## Contact
 
 This template is a demo application and is not maintained by the Upsun Developer Relations team, but they will be notified of all issues and pull requests you open here.
 
 - **Discord:** If you haven't done so already, you can join Upsun's community on [Discord](https://discord.gg/z2YQzTeZqY) channels and ping the `@devrel_team` with any questions.
 
-### About Upsun
+## About Upsun
 
 This template has been specifically designed to deploy on Upsun.
 
