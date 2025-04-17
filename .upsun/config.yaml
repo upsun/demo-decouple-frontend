@@ -23,6 +23,7 @@ applications:
             - xsl
             - pdo_sqlite
       - "nodejs@22"
+      - "composer"
     
     relationships:
       database:
@@ -51,7 +52,7 @@ applications:
         set -x -e
         ./scripts/clam_install.sh 
         php -m
-        php bin/console check:requirements
+        composer -v
         curl -fs https://get.symfony.com/cloud/configurator | bash
         
         NODE_VERSION=22 symfony-build
