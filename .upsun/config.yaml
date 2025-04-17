@@ -1,76 +1,89 @@
 routes:
-  "https://{all}/": { type: upstream, upstream: "app:http" }
-  "http://{all}/": { type: redirect, to: "https://{all}/" }
+    "https://{all}/": { type: upstream, upstream: "app:http", primary: true, cache: { enabled: true } }
+    "http://{all}/": { type: redirect, to: "https://{all}/" }
 
 
 services:
-  database:
-    type: postgresql:17
+    database:
+        type: postgresql:17
 
 applications:
-  app:
-    source:
-      root: "/backend"
-    
-    # Composable image feature
-    stack:
-      - "clamav"
-      - "php@8.3":
-          extensions:
-            - mailparse
-            - apcu
-            - sodium
-            - xsl
-            - pdo_sqlite
-      - "nodejs@22"
-      
-    relationships:
-      database:
-    
-    variables:
-      php:
-        opcache.preload: config/preload.php
-    build:
-      flavor: none
-    
-    web:
-      locations:
-        "/":
-          root: "public"
-          expires: 1h
-          passthru: "/index.php"
-    
-    mounts:
-      "/var": { source: storage, source_path: var }
-      # Mount of data to scan.
-      'mydata':
-        source: storage
-        source_path: mydata
-    hooks:
-      build: |
-        set -x -e
-        ./scripts/clam_install.sh 
-        composer -v
-        curl -fs https://get.symfony.com/cloud/configurator | bash
-        php-ext-install mailparse 3.1.6
+    app:
+        source:
+            root: "/backend"
         
-        php -m
+        type: php:8.3
         
-        NODE_VERSION=22 symfony-build
-        #curl -fsS https://raw.githubusercontent.com/upsun/snippets/main/src/install-github-asset.sh | bash /dev/stdin "Cisco-Talos/clamav"
-      
-      
-      deploy: |
-        set -x -e
+        runtime:
+            extensions:
+                - apcu
+                - blackfire
+                - mbstring
+                - sodium
+                - xsl
+                - pdo_pgsql
         
-        symfony-deploy
-    
-    crons:
-      security-check:
-        # Check that no security issues have been found for PHP packages deployed in production
-        spec: '50 23 * * *'
-        cmd: if [ "$PLATFORM_ENVIRONMENT_TYPE" = "production" ]; then croncape COMPOSER_ROOT_VERSION=1.0.0 COMPOSER_AUDIT_ABANDONED=ignore composer audit --no-cache; fi
-      clean-expired-sessions:
-        spec: '17,47 * * * *'
-        cmd: croncape php-session-clean
-    
+        relationships:
+            database:
+        
+        variables:
+            php:
+                opcache.preload: config/preload.php
+        build:
+            flavor: none
+        
+        web:
+            locations:
+                "/":
+                    root: "public"
+                    expires: 1h
+                    passthru: "/index.php"
+        
+        mounts:
+            "/var": { source: storage, source_path: var }
+        
+        hooks:
+            build: |
+                set -x -e
+                
+                curl -fs https://get.symfony.com/cloud/configurator | bash
+                
+                NODE_VERSION=22 symfony-build
+            
+            deploy: |
+                set -x -e
+                
+                symfony-deploy
+        
+        crons:
+            security-check:
+                # Check that no security issues have been found for PHP packages deployed in production
+                spec: '50 23 * * *'
+                cmd: if [ "$PLATFORM_ENVIRONMENT_TYPE" = "production" ]; then croncape COMPOSER_ROOT_VERSION=1.0.0 COMPOSER_AUDIT_ABANDONED=ignore composer audit --no-cache; fi
+            clean-expired-sessions:
+                spec: '17,47 * * * *'
+                cmd: croncape php-session-clean
+    clamav:
+      source:
+        root: "/clamav"
+      
+      stack:
+        - "clamav"
+      
+      build:
+        flavor: none
+      container_profile: BALANCED
+      
+      mounts:
+        'mydata':
+          source: storage
+          source_path: mydata
+        'var':
+          source: storage
+          source_path: var
+      
+      # Hook to create sctructure folder for ClamAV
+      hooks:
+        deploy: |
+          set -eu
+          ./scripts/clam_install.sh  
