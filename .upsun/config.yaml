@@ -23,7 +23,6 @@ applications:
             - xsl
             - pdo_sqlite
       - "nodejs@22"
-      - "composer"
     
     relationships:
       database:
