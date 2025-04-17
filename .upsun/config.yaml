@@ -22,15 +22,6 @@ applications:
                   - xsl
                   - pdo_sqlite
             - "nodejs@22"
-            
-        runtime:
-            extensions:
-                - apcu
-                - blackfire
-                - mbstring
-                - sodium
-                - xsl
-                - pdo_pgsql
         
         relationships:
             database:
