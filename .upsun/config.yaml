@@ -15,14 +15,14 @@ applications:
     # Composable image feature
     stack:
       - "clamav"
-      - "php@8.4":
+      - "php@8.3":
           extensions:
             - mailparse
             - apcu
             - sodium
             - xsl
             - pdo_sqlite
-            - phpize
+            - composer
       - "nodejs@22"
       
     relationships:
