@@ -16,12 +16,12 @@ applications:
     stack:
       - "clamav"
       - "php@8.4":
-        extensions:
-          - apcu
-          - sodium
-          - xsl
-          - pdo_sqlite
-          - mailparse
+          extensions:
+            - php-mailparse
+            - apcu
+            - sodium
+            - xsl
+            - pdo_sqlite
       - "nodejs@22"
     
     relationships:
