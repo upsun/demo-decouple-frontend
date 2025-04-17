@@ -17,7 +17,7 @@ applications:
       - "clamav"
       - "php@8.4":
           extensions:
-            - php-mailparse
+            - mailparse
             - apcu
             - sodium
             - xsl
@@ -51,6 +51,7 @@ applications:
         set -x -e
         ./scripts/clam_install.sh 
         php -m
+        php bin/console check:requirements
         curl -fs https://get.symfony.com/cloud/configurator | bash
         
         NODE_VERSION=22 symfony-build
