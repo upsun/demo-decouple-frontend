@@ -22,8 +22,9 @@ applications:
             - sodium
             - xsl
             - pdo_sqlite
+            - phpize
       - "nodejs@22"
-    
+      
     relationships:
       database:
     
