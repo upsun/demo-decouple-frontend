@@ -12,8 +12,17 @@ applications:
         source:
             root: "/backend"
         
-        type: php:8.3
-        
+        # Composable image feature
+        stack:
+            - "clamav"
+            - "php@8.4":
+                extensions:
+                  - apcu
+                  - sodium
+                  - xsl
+                  - pdo_sqlite
+            - "nodejs@22"
+            
         runtime:
             extensions:
                 - apcu
