@@ -21,6 +21,8 @@ applications:
             - sodium
             - xsl
             - pdo_sqlite
+            - mailparse
+            - composer
       - "nodejs@22"
     
     relationships:
