@@ -75,9 +75,9 @@ applications:
       container_profile: BALANCED
       
       mounts:
-        'mydata':
+        'data':
           source: storage
-          source_path: mydata
+          source_path: data
         'var':
           source: storage
           source_path: var
