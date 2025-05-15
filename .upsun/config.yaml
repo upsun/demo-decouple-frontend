@@ -2,6 +2,9 @@ routes:
   "https://{all}/": { type: upstream, upstream: "frontend:http" }
   "http://{all}/": { type: redirect, to: "https://{all}/" }
 
+
+  "https://{all}/admin": { type: upstream, upstream: "app:http" }
+  "http://{all}/admin": { type: redirect, to: "https://{all}/" }
 services: {}
 
 
@@ -29,7 +32,7 @@ applications:
     
     web:
       locations:
-        "/":
+        "/admin":
           root: "public"
           expires: 1h
           passthru: "/index.php"
